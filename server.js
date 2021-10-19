@@ -14,13 +14,13 @@ const upload = multer();
 const dotenv = require('dotenv');
 dotenv.config();
 
+const home = require('./src/handler/home');
+
 server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(staticHandler);
 server.use(bodyParser);
 
-server.get('/', (req, res) => {
-  res.send(/*html*/ `<h1>Hello!!</h1>`);
-});
+server.get('/', home.get);
 
 const PORT = process.env.PORT || 3000;
 
