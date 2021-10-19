@@ -23,4 +23,9 @@ function verifyUser(email, password) {
   });
 }
 
-module.exports = { COOKIE_OPTIONS, verifyUser };
+function saveUserSession(user) {
+  const randomSid = crypto.randomBytes(18).toString('base64');
+  return model.createSession(randomSid, { user });
+}
+
+module.exports = { COOKIE_OPTIONS, verifyUser, saveUserSession };
