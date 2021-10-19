@@ -1,5 +1,6 @@
 'use strict';
 
+// --------------------------------- MODULES
 const express = require('express');
 const server = express();
 
@@ -14,13 +15,18 @@ const upload = multer();
 const dotenv = require('dotenv');
 dotenv.config();
 
+// --------------------------------- HANDLERS
 const home = require('./src/handler/home');
+const login = require('./src/handler/logIn');
 
 server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(staticHandler);
 server.use(bodyParser);
 
 server.get('/', home.get);
+
+server.get('/log-in', login.get);
+server.post('/log-in', login.post);
 
 const PORT = process.env.PORT || 3000;
 
