@@ -19,6 +19,7 @@ dotenv.config();
 const home = require('./src/handler/home');
 const login = require('./src/handler/logIn');
 const signup = require('./src/handler/signUp');
+const addPictures = require('./src/handler/addPicture');
 
 server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(staticHandler);
@@ -31,6 +32,9 @@ server.post('/sign-up', signup.post);
 
 server.get('/log-in', login.get);
 server.post('/log-in', login.post);
+
+server.get('/add-picture', addPictures.get);
+server.post('/add-picture', upload.single('clueImage'), addPictures.post);
 
 const PORT = process.env.PORT || 3000;
 

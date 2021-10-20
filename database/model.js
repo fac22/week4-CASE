@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 'use strict';
 
 const db = require('./connection');
@@ -38,6 +40,11 @@ function getSession(sid) {
   });
 }
 
+function createPictureData(picture, user_id) {
+  const INSERT_PICTURE = ` INSERT INTO pictures (picture, user_id, created_at) VALUES ($1, $2, (SELECT CURRENT_TIMESTAMP))`;
+  return db.query(INSERT_PICTURE, [picture, user_id]);
+}
+
 function getPictureData() {
   const GET_PICTURE_IMG = `SELECT * FROM pictures;`;
   return db.query(GET_PICTURE_IMG).then((result) => {
@@ -50,5 +57,6 @@ module.exports = {
   getUser,
   createSession,
   getSession,
+  createPictureData,
   getPictureData,
 };
