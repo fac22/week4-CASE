@@ -11,6 +11,17 @@ const bodyParser = express.urlencoded({ extended: false });
 
 const multer = require('multer');
 const upload = multer();
+// const upload = multer({ storage: multer.diskStorage( { destination: function (req, file, cb) {  cb(null, 'picture-temp/');  }, filename: function (req, file, cb) { cb(null,new Date().valueOf() + '_' + file.originalname); }}),})
+// var storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, 'uploads/');
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + '.png'); //Appending .jpg
+//   },
+// });
+
+// var upload = multer({ storage: storage });
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -20,6 +31,7 @@ const home = require('./src/handler/home');
 const login = require('./src/handler/logIn');
 const signup = require('./src/handler/signUp');
 const addPictures = require('./src/handler/addPicture');
+const pictureTemp = require('./src/handler/pictureTemp');
 
 server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(staticHandler);
@@ -35,6 +47,8 @@ server.post('/log-in', login.post);
 
 server.get('/add-picture', addPictures.get);
 server.post('/add-picture', upload.single('clueImage'), addPictures.post);
+
+server.get('/picture-temp/:picId', pictureTemp.get);
 
 const PORT = process.env.PORT || 3000;
 

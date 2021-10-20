@@ -52,6 +52,13 @@ function getPictureData() {
   });
 }
 
+function getSinglePicture(id) {
+  const GET_PICTURE_IMG = `SELECT * FROM pictures WHERE id=$1;`;
+  return db.query(GET_PICTURE_IMG, [id]).then((result) => {
+    return result.rows[0];
+  });
+}
+
 module.exports = {
   createUser,
   getUser,
@@ -59,4 +66,5 @@ module.exports = {
   getSession,
   createPictureData,
   getPictureData,
+  getSinglePicture,
 };

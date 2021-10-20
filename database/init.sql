@@ -1,6 +1,6 @@
 BEGIN;
 
-DROP TABLE IF EXISTS users, sessions, pictures, guess CASCADE;
+DROP TABLE IF EXISTS users, sessions, pictures, guesses CASCADE;
 
 SET timezone = 'Europe/London';
 

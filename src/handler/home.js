@@ -32,15 +32,17 @@ function get(request, response) {
               .map(
                 (image) =>
                   ` <li>
-                <a href="/pictures/${image.id}">
+                
                     <img src="/picture-temp/${image.id}" alt="" class="image_homepage">
-                </a>
+                
               </li>
             `
               )
               .join('')}
             </ul> 
         `;
+
+        response.send(layoutHTML('Home', homeHtml));
       })
       .catch((error) => {
         console.error('error', error);
@@ -63,8 +65,9 @@ function get(request, response) {
         </section>
     </main>
     `;
+
+    response.send(layoutHTML('Home', homeHtml));
   }
-  response.send(layoutHTML('Home', homeHtml));
 }
 
 module.exports = { get };

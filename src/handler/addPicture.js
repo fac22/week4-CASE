@@ -1,7 +1,6 @@
 'use strict';
 
 const model = require('../../database/model');
-const auth = require('../../auth');
 const layoutHTML = require('../components/html');
 
 const MAX_SIZE = 1000 * 1000 * 5;
@@ -26,22 +25,24 @@ function get(request, response) {
 }
 function post(request, response) {
   const file = request.file;
-  if (!ALLOWED_TYPES === request.file.mimetype) {
-    response.status(400).send(`<h1> Bad file extension! </h1>`);
+  if (!ALLOWED_TYPES.includes(file.mimetype))  {
+    response.status(400).send(`<h1> Bad file extension! </h1><p>Please upload an image file</p><a href="/add-picture">Try uploading again</a>`);
   } else if (file.size > MAX_SIZE) {
-    response.status(400).send(`<h1> That's way too big! </h1>`);
+    response.status(400).send(`<h1> That's way too big! </h1><p>Picture must be < 5MB</p><a href="/add-picture">Try uploading again</a>`);
   } else {
     const sid = request.signedCookies.sid;
     model
       .getSession(sid)
+      .then((session) => model.getUser(session.user.email))
       .then((user) => {
-        console.log(user);
-        return model.createPictureData(file.buffer, user.id);
+        model.createPictureData(file.buffer, user.id);
       })
-      .then(response.redirect('/'))
+      .then(() => {
+        response.redirect('/');
+      })
       .catch((error) => {
         console.error('error', error);
-        response.send(`<h1>Something has gone wrong!</h1>`);
+        response.send(`<h1>Something has gone wrong!</h1><a href="/">Back to Homepage</a>`);
       });
   }
 }
