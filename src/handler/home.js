@@ -42,8 +42,9 @@ function get(request, response) {
             </ul> 
         `;
 
-        response.send(layoutHTML('Home', homeHtml));
+        return homeHtml;
       })
+      .then((html) => response.send(layoutHTML('Home', html)))
       .catch((error) => {
         console.error('error', error);
         response.send(`<h1>Something has gone wrong!</h1>`);
@@ -65,7 +66,6 @@ function get(request, response) {
         </section>
     </main>
     `;
-
     response.send(layoutHTML('Home', homeHtml));
   }
 }
