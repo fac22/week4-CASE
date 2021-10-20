@@ -17,6 +17,7 @@ function get(request, response) {
 
       <button type="submit">Log in</button>
     </form>
+    <a href="/">Back to Homepage</a>
     `;
   response.send(layoutHTML('Log-in', html));
 }

@@ -18,12 +18,16 @@ dotenv.config();
 // --------------------------------- HANDLERS
 const home = require('./src/handler/home');
 const login = require('./src/handler/logIn');
+const signup = require('./src/handler/signUp');
 
 server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(staticHandler);
 server.use(bodyParser);
 
 server.get('/', home.get);
+
+server.get('/sign-up', signup.get);
+server.post('/sign-up', signup.post);
 
 server.get('/log-in', login.get);
 server.post('/log-in', login.post);

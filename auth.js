@@ -11,6 +11,12 @@ const COOKIE_OPTIONS = {
   signed: true,
 };
 
+function createUser(name, email, password) {
+  return bcrypt
+    .hash(password, 10)
+    .then((hash) => model.createUser(name, email, hash));
+}
+
 function verifyUser(email, password) {
   return model.getUser(email).then((user) => {
     return bcrypt.compare(password, user.password).then((match) => {
@@ -28,4 +34,4 @@ function saveUserSession(user) {
   return model.createSession(randomSid, { user });
 }
 
-module.exports = { COOKIE_OPTIONS, verifyUser, saveUserSession };
+module.exports = { COOKIE_OPTIONS, createUser, verifyUser, saveUserSession };
