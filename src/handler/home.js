@@ -13,11 +13,12 @@ function get(request, response) {
     const getUserData = model.getSession(sid);
     const getPictureData = model.getPictureData();
 
-    Promise.all([getUserData, getPictureData]).then((values) => {
-      const userName = values[0].user.name;
-      const picturesData = values[1];
+    Promise.all([getUserData, getPictureData])
+      .then((values) => {
+        const userName = values[0].user.name;
+        const picturesData = values[1];
 
-      homeHtml = /*html*/ `
+        homeHtml = /*html*/ `
         <h1>Hello ${userName}</h1>
         <p>Let's solve the mystery!!!</p>
         <p>Choose a picture and figure out the felon 👺 </p>
@@ -27,20 +28,24 @@ function get(request, response) {
             <button>Log out</button>
         </form>
          <ul>
-            ${picturesData.map(image => 
-            ` <li>
+            ${picturesData
+              .map(
+                (image) =>
+                  ` <li>
                 <a href="/pictures/${image.id}">
                     <img src="/picture-temp/${image.id}" alt="" class="image_homepage">
                 </a>
               </li>
-            `).join("")}
+            `
+              )
+              .join('')}
             </ul> 
         `;
-    })
-    .catch((error) => {
-        console.error("error", error);
+      })
+      .catch((error) => {
+        console.error('error', error);
         response.send(`<h1>Something has gone wrong!</h1>`);
-    });
+      });
   } else {
     // user is logged out or not registered
     homeHtml = /*html*/ `

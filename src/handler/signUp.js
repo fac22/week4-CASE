@@ -26,9 +26,10 @@ function post(request, response) {
 
   auth
     .createUser(name, email, password)
-    .then(auth.saveUserSession)
+    .then((user) => auth.saveUserSession(user))
     .then((sid) => {
-      response.cookie('sid', sid, auth.COOKIE_OPTIONS).redirect('/');
+      response.cookie('sid', sid, auth.COOKIE_OPTIONS);
+      response.redirect('/');
     })
     .catch((error) => {
       console.error(error);
