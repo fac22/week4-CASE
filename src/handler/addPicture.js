@@ -11,38 +11,43 @@ function get(request, response) {
     <h2> <em> please </em> do not upload a photo of yourself to the internet, that is an extremely irresponsible thing to do! </h2>
     <form enctype="multipart/form-data" method="post">
     <label for="clueImage" style="cursor: pointer">Upload Image</label>
-  <input
+    <input
     type="file"
     accept="image/*"
     name="clueImage"
     id="clueImage"
     required
-  />
-  <img style="width: 150px" id="output" />
-  <button type="submit">Leave a mystery!</button> </form>
-  <a href="/"> Go back </a>`;
+    />
+    <img style="width: 150px" id="output" />
+    <button type="submit">Leave a mystery!</button> </form>
+    <a href="/"> Go back </a>`;
   response.send(layoutHTML('Upload Image', html));
 }
 function post(request, response) {
   const file = request.file;
-  if (!ALLOWED_TYPES.includes(file.mimetype))  {
-    response.status(400).send(`<h1> Bad file extension! </h1><p>Please upload an image file</p><a href="/add-picture">Try uploading again</a>`);
+  if (!ALLOWED_TYPES.includes(file.mimetype)) {
+    response.status(400).send(
+      `<h1> Bad file extension! </h1><p>Please upload an image file</p>
+        <a href="/add-picture">Try uploading again</a>`
+    );
   } else if (file.size > MAX_SIZE) {
-    response.status(400).send(`<h1> That's way too big! </h1><p>Picture must be < 5MB</p><a href="/add-picture">Try uploading again</a>`);
+    response.status(400).send(
+      `<h1> That's way too big! </h1><p>Picture must be < 5MB</p>
+          <a href="/add-picture">Try uploading again</a>`
+    );
   } else {
     const sid = request.signedCookies.sid;
     model
       .getSession(sid)
       .then((session) => model.getUser(session.user.email))
-      .then((user) => {
-        model.createPictureData(file.buffer, user.id);
-      })
-      .then(() => {
-        response.redirect('/');
-      })
+      .then((user) => model.createPictureData(file.buffer, user.id))
+      .then(() => response.redirect('/'))
       .catch((error) => {
         console.error('error', error);
-        response.send(`<h1>Something has gone wrong!</h1><a href="/">Back to Homepage</a>`);
+        response.send(
+          `<h1>Something has gone wrong!</h1>
+            <a href="/">Back to Homepage</a>`
+        );
       });
   }
 }

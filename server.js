@@ -12,16 +12,6 @@ const bodyParser = express.urlencoded({ extended: false });
 const multer = require('multer');
 const upload = multer();
 // const upload = multer({ storage: multer.diskStorage( { destination: function (req, file, cb) {  cb(null, 'picture-temp/');  }, filename: function (req, file, cb) { cb(null,new Date().valueOf() + '_' + file.originalname); }}),})
-// var storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, 'uploads/');
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, Date.now() + '.png'); //Appending .jpg
-//   },
-// });
-
-// var upload = multer({ storage: storage });
 
 const dotenv = require('dotenv');
 dotenv.config();
