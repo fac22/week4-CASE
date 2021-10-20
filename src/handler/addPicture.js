@@ -20,7 +20,14 @@ function get(request, response) {
     />
     <img style="width: 150px" id="output" />
     <button type="submit">Leave a mystery!</button> </form>
-    <a href="/"> Go back </a>`;
+    <a href="/"> Go back </a>
+    <script> function imgPreview(event) {
+      const image = event.target.files[0];
+      const preview = document.getElementById("output");
+      preview.src = URL.createObjectURL(image);
+    }
+    const imageInput = document.querySelector("#clueImage");
+    imageInput.addEventListener("change", imgPreview); </script>`;
   response.send(layoutHTML('Upload Image', html));
 }
 function post(request, response) {
