@@ -18,9 +18,10 @@ function get(request, response) {
         const userName = values[0].user.name;
         const picturesData = values[1];
 
-        homeHtml = /*html*/ `
+        homeHtml = /* html */ `
+        <header class="center">
         <h1>Hello ${userName}</h1>
-        <p>Let's solve the mystery!!!</p>
+        <p>Let's solve the mystery!!!</p> </header>
         <p>Choose a picture and figure out the felon 👺 </p>
         <p>OR add your own mystery picture!</p>
             <a href="/add-picture">Add your file</a>;
@@ -51,10 +52,10 @@ function get(request, response) {
       });
   } else {
     // user is logged out or not registered
-    homeHtml = /*html*/ `
-    <header>
-        <h1>Hello detective! 🕵️‍♀️</h1>
-        <p>Ready to solve a mystery? 🧐</p>
+    homeHtml = /* html */ `
+    <header >
+        <h1 class="center">Hello detective! 🕵️‍♀️</h1>
+        <h2>Ready to solve a mystery? 🧐</h2>
     </header>
     <main>
         <section>
