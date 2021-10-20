@@ -40,7 +40,7 @@ function post(request, response) {
   } else if (file.size > MAX_SIZE) {
     response.status(400).send(
       `<h1> That's way too big! </h1><p>Picture must be < 5MB</p>
-          <a href="/add-picture">Try uploading again</a>`
+          <a href="/add-picture">Try uploading again!</a>`
     );
   } else {
     const sid = request.signedCookies.sid;
