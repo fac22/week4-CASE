@@ -25,9 +25,15 @@ const pictureTemp = require('./src/handler/pictureTemp');
 const pictures = require('./src/handler/pictures');
 const logOut = require('./src/handler/logOut');
 
+// --------------------------------- MIDDLEWARE
+const logger = require('./src/middleware/logger');
+const checkAuth = require('./src/middleware/checkAuth');
+const handleErrors = require('./src/middleware/handleErrors');
+
 server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(staticHandler);
 server.use(bodyParser);
+server.use(logger);
 
 server.get('/', home.get);
 
@@ -37,7 +43,7 @@ server.post('/sign-up', signup.post);
 server.get('/log-in', login.get);
 server.post('/log-in', login.post);
 
-server.get('/add-picture', addPictures.get);
+server.get('/add-picture', checkAuth, addPictures.get);
 server.post('/add-picture', upload.single('clueImage'), addPictures.post);
 
 server.get('/picture-temp/:picId', pictureTemp.get);
@@ -46,6 +52,14 @@ server.get('/pictures/:picId', pictures.get);
 server.post('/pictures/:picId', pictures.post);
 
 server.post('/log-out', logOut.post);
+
+server.get('/error', (req, res, next) => {
+  const fakeError = new Error('This is the error!');
+  fakeError.status = 403;
+  next(fakeError);
+});
+
+server.use(handleErrors);
 
 const PORT = process.env.PORT || 3000;
 
