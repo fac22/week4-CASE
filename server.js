@@ -22,6 +22,7 @@ const login = require('./src/handler/logIn');
 const signup = require('./src/handler/signUp');
 const addPictures = require('./src/handler/addPicture');
 const pictureTemp = require('./src/handler/pictureTemp');
+const pictures = require('./src/handler/pictures');
 
 server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(staticHandler);
@@ -39,6 +40,9 @@ server.get('/add-picture', addPictures.get);
 server.post('/add-picture', upload.single('clueImage'), addPictures.post);
 
 server.get('/picture-temp/:picId', pictureTemp.get);
+
+server.get('/pictures/:picId', pictures.get);
+server.post('/pictures/:picId', pictures.post);
 
 const PORT = process.env.PORT || 3000;
 
