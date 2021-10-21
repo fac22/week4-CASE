@@ -24,7 +24,7 @@ function getUser(email) {
 
 function getUserById(userId) {
   const selectUser = `
-  SELECT * FROM users WHERE id=$1;`;
+  SELECT name FROM users WHERE id=$1;`;
   return db.query(selectUser, [userId]).then((result) => {
     return result.rows[0];
   });
