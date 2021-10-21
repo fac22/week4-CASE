@@ -32,14 +32,28 @@ function post(request, response) {
   const guess = request.body.guess;
   const picId = request.params.picId;
 
-  return model
-    .storeGuess(guess, picId)
-    .then(() => response.redirect(`/pictures/${picId}`))
-    .catch((error) => {
-      console.error('error', error);
-      return response.send(
-        `<h1>Unable to post your guess! :(</h1><a href="/">↩ Back to Homepage</a>`
-      );
-    });
+  return (
+    model
+      .storeGuess(guess, picId)
+      .then((guessObj) => model.getUserById(guessObj.user_id))
+      .then((user) => {
+        if (guess === user) {
+          response.send(
+            /*html*/ `<h1>Well done, you solved the mystery!</h1> <a href="/">↩ Back to Homepage</a>`
+          );
+        } else {
+          response.send(
+            /*html*/ `<h1>Sorry, no luck 😦 <a href='/pictures/${picId}'>Guess again!</a></h1>`
+          );
+        }
+      })
+      // .then(() => response.redirect(`/pictures/${picId}`))
+      .catch((error) => {
+        console.error('error', error);
+        return response.send(
+          `<h1>Unable to post your guess! :(</h1><a href="/">↩ Back to Homepage</a>`
+        );
+      })
+  );
 }
 module.exports = { get, post };
