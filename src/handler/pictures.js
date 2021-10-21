@@ -18,7 +18,9 @@ function get(request, response) {
             <input type="text" id="guess" name="guess" required>
            <button type="submit">Submit</button>
         </form>
-        <a href="/">↩ Back to Homepage</a>
+        <div class='return'>
+          <a href="/">↩ Back to Homepage</a>
+        </div>
         `;
 
       response.send(layoutHTML('Clue Picture', html));

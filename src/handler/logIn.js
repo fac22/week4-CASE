@@ -6,7 +6,9 @@ const auth = require('../../auth');
 
 function get(request, response) {
   const html = /*html*/ `
-    <h1>Log in</h1>
+    <h1 class='signup center'>Log in</h1>
+
+    <main class='center width-sm stack-md'>
     <form action="/log-in" method="POST">
 
       <label for="email">Email</label>
@@ -14,10 +16,15 @@ function get(request, response) {
 
       <label for="password">Password</label>
       <input type="password" id="password" name="password">
+      <br />
 
       <button type="submit">Log in</button>
     </form>
-    <a href="/">Back to Homepage</a>
+    <br />
+    <div class='return'>
+      <a href="/">↩ Back to Homepage</a>
+    </div>
+    </main>
     `;
   response.send(layoutHTML('Log-in', html));
 }

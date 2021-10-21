@@ -7,8 +7,8 @@ const MAX_SIZE = 1000 * 1000 * 5;
 const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
 
 function get(request, response) {
-  const html = /* html */ `<h1> please upload an image that represents you <h1>
-    <h2> <em> please </em> do not upload a photo of yourself to the internet, that is an extremely irresponsible thing to do! </h2>
+  const html = /* html */ `<h2 class='signup'> please upload an image that represents you </h2>
+    <h3> <em> please </em> do not upload a photo of yourself to the internet, that is an extremely irresponsible thing to do! </h3>
     <form enctype="multipart/form-data" method="post">
     <label for="clueImage" style="cursor: pointer">Upload Image</label>
     <input
@@ -20,7 +20,9 @@ function get(request, response) {
     />
     <img style="width: 150px" id="output" />
     <button type="submit">Leave a mystery!</button> </form>
-    <a href="/"> Go back </a>
+    <div class='return'>
+      <a href="/">↩ Back to Homepage</a>
+    </div>
     <script> function imgPreview(event) {
       const image = event.target.files[0];
       const preview = document.getElementById("output");

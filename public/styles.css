@@ -15,6 +15,14 @@
   font-style: normal;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&family=Lato&family=Oswald&family=Raleway:wght@300;400;500&display=swap');
+
+/* ----------------- FONT FAMILIES
+font-family: 'Inconsolata', monospace;
+font-family: 'Lato', sans-serif;
+font-family: 'Oswald', sans-serif;
+font-family: 'Raleway', sans-serif; */
+
 * {
   margin: 0;
   padding: 0;
@@ -34,8 +42,8 @@ header {
   /* background-color: black; */
   background: repeating-linear-gradient(
     0deg,
-    #3e3636,
-    #3e3636 15px,
+    #54545c,
+    #54545c 15px,
     #ffffff 10px,
     #ffffff 20px
   );
@@ -50,33 +58,95 @@ header {
   /* background-image: url('assets/memphis-mini-dark.png'); */
 }
 h1 {
-  color: #a11800;
-  background-color: rgb(244, 244, 244);
-  padding: 2rem;
-  max-width: 40vw;
+  color: #ba0306;
+  background-color: rgba(171, 170, 172, 0.7);
+  padding: 1.7rem;
+  max-width: 50vw;
   margin-top: 10vh;
+
   font-family: 'Breezy-Beach-Regular-Alternates';
-  font-size: 4.3rem;
+  font-size: 4rem;
   font-style: italic;
   text-transform: uppercase;
-  border: 4px solid rgba(23, 21, 21, 0.8);
-  border-bottom: 6px solid rgba(23, 21, 21, 0.8);
+
+  border: 5px solid rgba(23, 21, 21, 0.8);
+  border-bottom: 7px solid rgba(23, 21, 21, 0.8);
   border-radius: 10px;
   box-shadow: 0px 4px 4px rgba(33, 31, 32, 0.5);
   text-align: center;
 }
 
 h2 {
-  background-color: #ffffff;
-  color: #000000;
+  color: #1b1b1b;
+  background-color: rgba(171, 170, 172, 0.7);
+
+  width: 40%;
   letter-spacing: -1px;
-  /* font-weight: lighter; */
+
   font-family: monospace;
   padding: 5pt;
   font-size: 1.5rem;
+  margin-top: 2rem;
+
+  border: 2px solid rgba(23, 21, 21, 0.8);
+  border-bottom: 3px solid rgba(23, 21, 21, 0.8);
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(33, 31, 32, 0.5);
+  text-align: center;
+}
+
+h3 {
+  color: #1b1b1b;
+  background-color: rgba(187, 55, 75, 0.7);
+
+  /* width: 70%; */
+  letter-spacing: -1px;
+
+  font-family: monospace;
+  padding: 5pt;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+
+  border: 2px solid rgba(23, 21, 21, 0.8);
+  border-bottom: 3px solid rgba(23, 21, 21, 0.8);
+  border-radius: 10px;
+  box-shadow: 0px 4px 4px rgba(33, 31, 32, 0.5);
+  text-align: center;
 }
 p {
   padding: 5pt;
+}
+
+img {
+  width: 200px;
+}
+
+.signup {
+  background: repeating-linear-gradient(
+    0deg,
+    #a7a7b0,
+    #a7a7b0 15px,
+    #ffffff 10px,
+    #ffffff 20px
+  );
+}
+.detective {
+  width: 200px;
+}
+.left {
+  transform: rotateY(180deg);
+}
+
+.line {
+  font-size: 3rem;
+}
+.home {
+  font-size: 2rem;
+  transition: all 0.3s;
+}
+
+.home:hover {
+  transform: translateY(-3%);
 }
 
 label,
@@ -93,11 +163,7 @@ fieldset label {
 }
 ul {
   list-style-type: none;
-}
-
-img {
-  max-width: 250px;
-  padding: 10pt;
+  margin-top: 3rem;
 }
 
 .banner {
@@ -128,10 +194,6 @@ img {
   transform: translateY(-3%);
   box-shadow: 5px 5px 5px rgba(237, 46, 13, 0.5);
 }
-.center {
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .box {
   margin-top: 20pt;
@@ -158,19 +220,6 @@ img {
   align-self: flex-end;
 }
 
-.row {
-  display: flex;
-
-  gap: 1rem;
-  align-items: baseline;
-  /* justify-content: flex-start; */
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  width: 100%;
-  color: white;
-  background-color: #e02401;
-}
-
 form {
   color: black;
 }
@@ -188,7 +237,7 @@ input {
   border: 2px solid rgba(23, 21, 21, 0.8);
   border-bottom: 3px solid rgba(23, 21, 21, 0.8);
   border-radius: 6px;
-  box-shadow: 0px 4px 4px rgba(247, 136, 18, 0.5);
+  box-shadow: 0px 4px 4px rgba(66, 79, 107, 0.5);
 }
 
 input:hover,
@@ -197,34 +246,161 @@ input:focus {
 }
 
 button {
-  width: 30%;
-  font-family: 'Nunito';
+  /* width: 30%; */
+  font-family: 'American-Typewriter-Regular', 'Courier New', monospace;
   font-size: 1.5rem;
-  background-color: #d72323;
-  /* height: 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; */
+  background-color: rgba(66, 79, 107, 0.6);
 
   margin-top: 1.2rem;
   margin-bottom: 1rem;
   margin-left: 0.5rem;
   padding: 2px;
 
-  color: #51050f;
+  color: black;
   text-align: center;
 
   border: 2px solid rgba(23, 21, 21, 0.8);
   border-bottom: 3px solid rgba(23, 21, 21, 0.8);
   border-radius: 10px;
-  box-shadow: 0px 4px 4px rgba(224, 36, 1, 0.5);
+  box-shadow: 0px 4px 4px rgba(66, 79, 107, 0.5);
 
   transition: all 0.3s;
 }
 
 button:hover {
   transform: translateY(-3%);
-  box-shadow: 5px 5px 5px rgba(237, 46, 13, 0.5);
+  box-shadow: 5px 5px 5px rgba(66, 79, 107, 0.5);
   cursor: pointer;
 }
+
+/* ----------------------- return HOME ----------------------- */
+
+.return {
+  font-size: 1rem;
+  text-align: center;
+
+  padding: 0.5rem;
+  margin-top: 3rem;
+
+  border: 1px solid rgba(23, 21, 21, 0.8);
+  border-bottom: 3px solid rgba(23, 21, 21, 0.8);
+  border-radius: 10px;
+  box-shadow: 0px 3px 3px rgba(134, 38, 193, 0.7);
+
+  transition: all 0.3s;
+}
+
+.return:hover {
+  transform: translateY(-3%);
+  box-shadow: 5px 5px 5px rgba(66, 79, 107, 0.5);
+  cursor: pointer;
+}
+
+.add-file {
+  background-color: rgba(134, 38, 193, 0.9);
+  font-size: 2rem;
+  text-align: center;
+
+  /* width: 30%; */
+  padding: 1rem;
+  margin-top: 3rem;
+
+  border: 1px solid rgba(23, 21, 21, 0.8);
+  border-bottom: 3px solid rgba(23, 21, 21, 0.8);
+  border-radius: 10px;
+  box-shadow: 0px 3px 3px rgba(134, 38, 193, 0.7);
+
+  transition: all 0.3s;
+}
+
+.add-file:hover {
+  transform: translateY(-3%);
+  box-shadow: 5px 5px 5px 2px rgba(125, 53, 226, 0.5);
+  cursor: pointer;
+}
+
+/* ----------------------------------------------------------------- PRIMITIVES ------------------------------------------------------------- */
+/* -----------------------------------------------------------------            ------------------------------------------------------------- */
+/* -----------------------------------------------------------------            ------------------------------------------------------------- */
+
+/* ------------------------------------------------ CENTER / WIDTH  */
+.center {
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.width-ssm {
+  max-width: 15rem;
+}
+
+.width-sm {
+  max-width: 20rem;
+}
+
+.width-smd {
+  max-width: 25rem;
+}
+
+.width-md {
+  max-width: 50rem;
+}
+
+.width-lg {
+  max-width: 60rem;
+}
+
+.width-xl {
+  max-width: 100rem;
+}
+
+/* ------------------------------------------------ MARGIN STACKS  */
+.stack-sm > * + * {
+  margin-top: 0.5rem;
+}
+
+.stack-md > * + * {
+  margin-top: 1rem;
+}
+
+.stack-lg > * + * {
+  margin-top: 2rem;
+}
+
+.stack-xl > * + * {
+  margin-top: 4rem;
+}
+
+/* ------------------------------------------------ HORIZONTAL ALIGNEMENT  */
+.row {
+  display: flex;
+  gap: 1rem;
+  /* flex-wrap: wrap; */
+  align-items: center;
+}
+
+.gap-lg {
+  gap: 2rem;
+}
+
+.gap-xl {
+  gap: 4rem;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+/* ------------------------------------------------ GRID  */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.7rem;
+  /* grid-template-columns: repeat(3, 1fr); */
+}
+
+.column-lg {
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------ */
