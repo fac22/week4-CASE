@@ -32,7 +32,9 @@ function post(request, response) {
     })
     .catch((error) => {
       console.error('error', error);
-      response.send(/*html*/ `<h1>User not found!</h1>`);
+      response.send(
+        /*html*/ `<h1>User not found!</h1> <a href="/">Back to Homepage</a>`
+      );
     });
 }
 
