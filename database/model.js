@@ -22,6 +22,14 @@ function getUser(email) {
   });
 }
 
+function getUserById(userId) {
+  const selectUser = `
+  SELECT * FROM users WHERE id=$1;`;
+  return db.query(selectUser, [userId]).then((result) => {
+    return result.rows[0];
+  });
+}
+
 function createSession(sid, data) {
   const INSERT_SESSION = `
 INSERT INTO sessions (sid, data) VALUES ($1, $2)
@@ -60,14 +68,15 @@ function getSinglePicture(id) {
 }
 
 function storeGuess(guess, picId) {
-  const INSERT_GUESS = `INSERT INTO guesses (guess_name, picture_id, created_at) VALUES ($1, $2,(SELECT CURRENT_TIMESTAMP))
-  RETURNING guess_name, picture_id`;
+  const INSERT_GUESS = `INSERT INTO guesses (guess_name, picture_id, user_id, created_at) VALUES ($1, $2, (SELECT user_id FROM pictures WHERE pictures.id = $2), (SELECT CURRENT_TIMESTAMP))
+  RETURNING guess_name, picture_id, user_id`;
   return db.query(INSERT_GUESS, [guess, picId]);
 }
 
 module.exports = {
   createUser,
   getUser,
+  getUserById,
   createSession,
   getSession,
   createPictureData,
