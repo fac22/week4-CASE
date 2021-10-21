@@ -31,11 +31,10 @@ function get(request, response) {
          <ul>
             ${picturesData
               .map(
-                (image) =>
-                  ` <li>
-                
+                (image) => /*html*/ ` <li>
+                  <a href="/pictures/${image.id}">
                     <img src="/picture-temp/${image.id}" alt="" class="image_homepage">
-                
+                  </a>
               </li>
             `
               )
