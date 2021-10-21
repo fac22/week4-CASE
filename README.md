@@ -49,6 +49,7 @@ As a user, I want:
 - Individual page for each user
 - Flash messages
 - GitHub actions CI
+- More testing with Cypress
 
 ### Schema 🍥
 
