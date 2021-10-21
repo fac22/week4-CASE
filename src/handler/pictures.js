@@ -39,18 +39,17 @@ function post(request, response) {
       return model.getUserById(guessObj.user_id);
     })
     .then((user) => {
-      //   console.log('This is the user:', user);
+      console.log('This is the user:', user);
       if (guess === user.name) {
         response.send(
           /*html*/ `<h1>Well done, you solved the mystery!</h1> <a href="/">↩ Back to Homepage</a>`
         );
       } else {
-        response.send(
-          /*html*/ `<h1>Sorry, no luck 😦 <a href='/pictures/${picId}'>Guess again!</a></h1>`
-        );
+        response.send(/*html*/ `<h1>Sorry, no luck 😦 <a href='/pictures/${picId}'>Guess again!</a> OR 
+          <a href="/"> Back to Homepage ↩</a>
+          </h1>`);
       }
     })
-    // .then(() => response.redirect(`/pictures/${picId}`))
     .catch((error) => {
       console.error('error', error);
       return response.send(

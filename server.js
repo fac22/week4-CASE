@@ -23,6 +23,7 @@ const signup = require('./src/handler/signUp');
 const addPictures = require('./src/handler/addPicture');
 const pictureTemp = require('./src/handler/pictureTemp');
 const pictures = require('./src/handler/pictures');
+const logOut = require('./src/handler/logOut');
 
 server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(staticHandler);
@@ -43,6 +44,8 @@ server.get('/picture-temp/:picId', pictureTemp.get);
 
 server.get('/pictures/:picId', pictures.get);
 server.post('/pictures/:picId', pictures.post);
+
+server.post('/log-out', logOut.post);
 
 const PORT = process.env.PORT || 3000;
 

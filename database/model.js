@@ -73,6 +73,11 @@ function storeGuess(guess, picId) {
   return db.query(INSERT_GUESS, [guess, picId]);
 }
 
+function deleteSession(sid) {
+  const DELETE_SESSION = 'DELETE FROM sessions WHERE sid=$1';
+  return db.query(DELETE_SESSION, [sid]);
+}
+
 module.exports = {
   createUser,
   getUser,
@@ -83,4 +88,5 @@ module.exports = {
   getPictureData,
   getSinglePicture,
   storeGuess,
+  deleteSession,
 };
