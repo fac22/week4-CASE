@@ -59,6 +59,12 @@ function getSinglePicture(id) {
   });
 }
 
+function storeGuess(guess, picId) {
+  const INSERT_GUESS = `INSERT INTO guesses (guess_name, picture_id, created_at) VALUES ($1, $2,(SELECT CURRENT_TIMESTAMP))
+  RETURNING guess_name, picture_id`;
+  return db.query(INSERT_GUESS, [guess, picId]);
+}
+
 module.exports = {
   createUser,
   getUser,
@@ -67,4 +73,5 @@ module.exports = {
   createPictureData,
   getPictureData,
   getSinglePicture,
+  storeGuess,
 };
