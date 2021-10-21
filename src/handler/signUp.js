@@ -16,7 +16,7 @@ function get(request, response) {
       <label for='password'>Password <span aria-hidden="true">*</span></label>
       <input type="password" id='password' name='password' required />
       <br />
-      <button>Submit</button>
+      <button type="submit">Submit</button>
     </form><br><br>
     <div class='return'>
       <a href="/">↩ Back to Homepage</a>

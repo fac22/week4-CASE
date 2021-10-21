@@ -30,7 +30,7 @@ function get(request, response) {
         <section class='center width-md'>
           <div class='row'>
             <div class='add-file'>
-              <a href="/add-picture">Add your file</a>;
+              <a href="/add-picture">Add your file</a>
             </div>
             
           </div>
