@@ -11,11 +11,27 @@ function get(request, response) {
     <main class='center width-sm stack-md'>
     <form action="/log-in" method="POST">
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email">
+      <label for="email">Email <span aria-hidden="true">*</span> </label>
+      <input id="email" type="email" aria-describedby="emailError" required />
+      <div id="emailError" class="error"></div>
 
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password">
+      <label for="password">
+        Password
+        <span aria-hidden="true">*</span>
+      </label>
+      <div id="passwordRequirements" class="requirements">
+        Passwords must contain at least one number, and be at least 8 characters
+        long.
+      </div>
+      <input
+        id="password"
+        type="password"
+        aria-describedby="passwordRequirements passwordError"
+        required
+        pattern=".*\d.*"
+        minlength="8"
+      />
+      <div id="passwordError" class="error"></div>
       <br />
 
       <button type="submit">Log in</button>
