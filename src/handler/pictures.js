@@ -42,7 +42,7 @@ function post(request, response) {
     })
     .then((user) => {
       console.log('This is the user:', user);
-      if (guess === user.name) {
+      if (guess.toLowerCase() === user.name.toLowerCase()) {
         response.send(
           /*html*/ `<h1>Well done, you solved the mystery!</h1> <a href="/">↩ Back to Homepage</a>`
         );
