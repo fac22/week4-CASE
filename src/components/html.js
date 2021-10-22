@@ -13,8 +13,9 @@ function layoutHTML(title, content) {
     <meta name="author" content="cemalokten, cerealenjoyer, elenamarinaki, aaadriana" />
     <link rel="stylesheet" href="/styles.css" /> 
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poller+One&display=swap" rel="stylesheet"> 
+  <script src='../../index.js'></script>
     <title>${title}</title>
   </head>
   <body>

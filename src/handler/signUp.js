@@ -11,10 +11,27 @@ function get(request, response) {
       <p>Please use your real name, otherwise the game doesn't work 🤷 </p>
       <label for='name'>Name <span aria-hidden="true">*</span></label>
       <input type="name" id='name' name='name' required />
+
       <label for='email'>Email <span aria-hidden="true">*</span></label>
-      <input type="email" id='email' name='email' required />
-      <label for='password'>Password <span aria-hidden="true">*</span></label>
-      <input type="password" id='password' name='password' required />
+      <input type="email" id='email' name='email' aria-describedby="emailError" required />
+      <div id="emailError" class="error"></div>
+
+      <label for="password">
+        Password
+        <span aria-hidden="true">*</span>
+      </label>
+      <div id="passwordRequirements" class="requirements">
+        Passwords must contain at least one number, and be at least 8 characters
+        long.
+      </div>
+      <input
+        id="password"
+        type="password"
+        aria-describedby="passwordRequirements passwordError"
+        required
+        minlength="8"
+      />
+      <div id="passwordError" class="error"></div>
       <br />
       <button type="submit">Submit</button>
     </form><br><br>
